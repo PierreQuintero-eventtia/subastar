@@ -1,0 +1,39 @@
+<div class="auctions-dash">
+        <h2 class="my-4 title-content">Productos</h2>
+          <table class="table table-bordered rounded-lg text-center">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Artista</th>
+                <th scope="col">Precio Inicial</th>
+                <th scope="col">Costos de envìo</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Imagen</th>
+                <th scope="col">Acciones</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+            <%@products.each do |product|%>
+              <tr>
+                <th><%= product.title%></th>
+                <td><%= product.description%></td>
+                <td><%= product.author%></td>
+                <td>$<%= product.initial_price%></td>
+                <td>$<%= product.delivery_cost%></td>
+                <td><%= product.category.name%></td>
+                <td><%= (image_tag product.image.variant(resize:100)) %></td>
+                <td>
+                      <div class="btn-group float-right my-3" role="group">
+                       
+                        <%= link_to 'Edit', edit_product_path(product), class:"btn btn-outline-secondary btn-grupo", type:"button" %>
+                        <%= link_to 'Destroy', product, method: :delete, class:"btn btn-outline-secondary btn-grupo", type:"button", data: { confirm: 'Are you sure?' } %>
+                        
+                      </div>
+                </td>
+              </tr>
+            <%end%>
+            </tbody>
+          </table>
+        </div>

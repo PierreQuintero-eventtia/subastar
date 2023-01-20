@@ -1,0 +1,119 @@
+
+<nav id="header" class="navbar sticky-top navbar-expand-lg navbar-light">
+<div class="container">
+  <%= link_to  root_path ,class:"brand-container" do%>
+  <%= image_tag '250X83_COLOR', class:"navbar-brand img-fluid" %>
+  <%end%>
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mx-auto">
+
+      <li class="nav-item">
+        <%= link_to 'Inicio', root_path, class:"nav-link hvr-underline-from-center " %>
+      </li>
+      <% if user_signed_in? %>
+         <li class="nav-item dropdown">
+         
+            <a class="nav-link dropdown-toggle hvr-underline-from-center" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Mis Subastas
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to 'Mis Subastas', auctions_path, :class => 'dropdown-item'  %>
+              <div class="dropdown-divider"></div>
+              <%= link_to 'Mis Productos', products_path, :class => 'dropdown-item' %> 
+              <div class="dropdown-divider"></div>
+              <%= link_to "Carrito", carrito_path, :class => 'dropdown-item'  %>
+            
+            </div>
+            
+            
+        </li>
+
+        
+         <li class="nav-item dropdown">
+         
+            <a class="nav-link dropdown-toggle hvr-underline-from-center" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Mi perfil
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "Ver mi perfil", perfil_path, :class => 'dropdown-item'  %>
+              <div class="dropdown-divider"></div>
+              <%= link_to 'Editar perfil', edit_user_registration_path, :class => 'dropdown-item' %> 
+            </div>
+            
+            
+        </li>
+
+       
+         
+
+        <% if current_user.admin?%>
+        <li class="nav-item dropdown">
+         
+            <a class="nav-link dropdown-toggle hvr-underline-from-center" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dashboard
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "Dashboard", dashboard_path, :class => 'dropdown-item'  %>
+              <div class="dropdown-divider"></div>
+              <%= link_to "Productos", productos_path, :class => 'dropdown-item'  %> 
+              <div class="dropdown-divider"></div>
+              <%= link_to "Subastas", dashboard_auctions_path, :class => 'dropdown-item'  %> 
+              </div>
+            
+            
+        </li>
+
+        <%end%>
+       
+        <li class="nav-item">
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-link hvr-underline-from-center'  %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to carrito_path, :class => 'nav-link hvr-underline-from-center' do %>
+            <i class="lni lni-lg lni-cart"></i>
+          <%end%>
+        </li>
+       
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Registro", new_user_registration_path, :class => 'nav-link hvr-underline-from-center'  %> 
+        </li>
+        <li class="nav-item">
+          <%= link_to "Inicio Sesiòn", new_user_session_path, :class => 'nav-link hvr-underline-from-center'  %>
+        </li>
+      <% end %>
+      
+        
+     
+    
+    </ul>
+
+    <% if controller_name == 'home' && action_name == 'index' %>
+    
+      <%= form_tag(root_path, :method => "get",   
+          class: 'form-inline my-2 my-lg-0') do %>  
+        <div class="input-group ">  
+          <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control  input-search" %>  
+          <div class="input-group-append">  
+            <%= button_tag :class => 'btn btn-outline-success my-sm-0 button-search text-center',:name => nil do%> 
+            <i class="lni lni-lg lni-search-alt"></i> 
+            <%end%>
+          </div>  
+        </div>  
+      <% end %>
+    <%else%>
+     
+    <%end%>
+    
+  </div>
+  </div>
+</nav>
+  
+
+  

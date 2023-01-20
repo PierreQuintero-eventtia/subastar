@@ -1,0 +1,801 @@
+// Place all the styles related to the Auctions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+//colores
+@import 'variables';
+@import 'mixins';
+
+body {
+  background-color: $whiteBg;
+  color:$blackText;
+  font-family: $open;
+  font-weight: 300;
+}
+h1,h2,h3,h4,h5 {
+  font-family: $raleway;
+}
+
+
+.navbar{
+  padding:10px 30px;
+  background-color: white;
+  border-radius: 1em;
+  font-family:$raleway;
+  font-size:0.9em;
+  color:$blackText;
+  font-weight: 500;
+  box-shadow: $shadowBox;
+
+  .brand-container{
+    width:220px;
+  }
+
+  .navbar-brand{
+    width:65%;
+    color:$electric;
+    
+    &:hover{
+      color:$cyan;
+    }
+  }
+
+  .input-search{
+    border-radius: 20px;
+    background-color: $blueLight;
+    border: none;
+    font-size: 0.8em;
+  }
+  
+
+
+  .nav-item{
+    padding: 0 20px;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    letter-spacing: 1.2px;
+    font-weight: 700;
+
+    .nav-link{
+      color:$grayDark;
+      &:hover{
+        color:$electric ;
+      }
+      
+    }
+  }
+
+  
+}
+
+.dropdown{
+  .dropdown-item{
+    color:$electric;
+    font-size: 0.7em;
+    font-family:$raleway;
+    font-weight: 700;
+
+    &:hover{
+      color:$cyan;
+    }
+  }
+}
+
+.button-search{
+  font-weight: 700;
+  border-radius: 20px;
+  border-color: $electric;
+  color:white;
+  font-family: $raleway;
+  font-size: 0.8em;
+  background-color: $electric;
+      
+
+  &:hover{
+    background-color: white;
+    color:$electric;
+    border-color: $electric;
+  }
+}
+
+.card {
+  width: 600px;
+  border-radius: 10px;
+  box-shadow: $shadowBox;
+  margin: 20px 20px 20px 20px;
+
+  .text-secondary{
+    font-size:0.9em;
+    font-family: $open;
+    
+  }
+  .price{
+    font-weight: 900;
+    color:$electric !important;
+  }
+  .text-muted{
+    font-size:0.8em;
+  }
+  .rating{
+    height: 30px;
+
+  }
+
+}
+
+.set-p {
+  padding-left: 15px;
+  padding-right: 15px
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px
+}
+
+.verde {
+  @include tag_category($cyan)
+}
+
+.rosa {
+ @include tag_category($pink);
+}
+
+.grade {
+  text-transform: uppercase;
+  //font-family: $raleway;
+  font-weight: 300;
+  font-size: 0.9em;
+  color: $electric !important;
+}
+
+.line {
+  height: 1px;
+  background-color: $grayLight;
+}
+
+@media screen and (max-width: 575px) {
+  .image {
+      height: auto;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 0px;
+      border-top-right-radius: 10px
+  }
+}
+
+.description{
+  font-weight: 300;
+  font-size:1em;
+}
+
+.btn-grupo{
+  border-radius: 1em;
+  border-color: $electric;
+  color:$electric;
+  font-family: $raleway;
+  font-size: 0.8em;
+      
+
+  &:hover{
+    background-color: $electric;
+    color:white;
+  }
+}
+
+.plus{
+  font-size: 0.7em;
+  color:$grayDark;
+  
+}
+
+.time-words{
+  color:$electric;
+  font-weight:700;
+}
+
+.unlike{
+  color:$grayDark;
+}
+
+.like{
+  color:$pink;
+}
+.upinfo{
+  display:flex;
+}
+
+
+.active{
+  @include status($green);
+}
+.inactive{
+  @include status($pink);
+}
+
+.completed{
+  @include status($cyan);
+}
+
+.deserted{
+  @include status($grayDark);
+}
+
+.navbarBg{
+  background-color: $electric;
+  border-radius: 0 ;
+  box-shadow: $shadowBox !important;
+  .nav-link{
+    color:white !important;
+  }
+}
+
+
+
+.content{
+  margin: 0 20px;
+
+  .title-content{
+    font-weight: 700;
+    font-size:1.8em;
+  }
+
+
+  
+}
+    .auctions-dash{
+      
+        margin: 100px 0 50px 0;
+        padding:40px 40px;
+        border: 1px solid $grayLight;
+        background-color: white;
+        border-radius: 1em;
+        box-shadow: $shadowBox;
+    
+        table{
+          font-size:0.8em;
+    
+          th{
+            background-color: $grayLight;
+            color: $grayDark;
+            font-size:1em;
+            font-weight: 300;
+          }
+        }
+      }
+
+.btn-form{
+  background-color: $electric;
+  border-radius: 1em;
+  color:white;
+  font-size:0.9em;
+}
+
+
+//////// perfil page
+
+
+.main-body {
+  padding: 15px;
+}
+
+.card2 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0 solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1rem;
+}
+
+.gutters-sm {
+  margin-right: -8px;
+  margin-left: -8px;
+}
+
+.gutters-sm>.col, .gutters-sm>[class*=col-] {
+  padding-right: 8px;
+  padding-left: 8px;
+}
+.mb-3, .my-3 {
+  margin-bottom: 1rem!important;
+}
+
+.bg-gray-300 {
+  background-color: #e2e8f0;
+}
+.h-100 {
+  height: 100%!important;
+}
+.shadow-none {
+  box-shadow: none!important;
+}
+
+
+.title-show{
+  font-family: $raleway;
+  font-weight: 900;
+  font-size:2em;
+
+
+}
+
+.finaliza{
+  font-family: $open;
+  font-weight: 500;
+  font-size: 1em;
+}
+
+
+
+.timer{
+  display:flex;
+  padding: 20px;
+   font-size:2em;
+   font-family: $open;
+   color: $electric;
+   font-weight: 900;
+   border: 1px solid $electric;
+   border-radius: 0.5em;
+   background-color: $grayLight;
+   box-shadow: $shadowBox;
+   
+
+   .jst-hours{
+    align-items: center;
+    text-align: center;
+     margin-right:20px;
+     
+     &:after{
+       font-family: $raleway;
+       display: flex;
+       flex-direction: column;
+       content: "HORAS";
+       color:$grayDark;
+       font-size:0.3em;
+     }
+     
+   }
+
+   .jst-minutes{
+    align-items: center;
+    text-align: center;
+    margin-right:20px;
+    &:after{
+      font-family: $raleway;
+      display: flex;
+      flex-direction: column;
+      content: "MINUTOS";
+      color:$grayDark;
+      font-size:0.3em;
+    }
+  }
+
+  .jst-seconds{
+    
+    align-items: center;
+    text-align: center;
+    &:after{
+      font-family: $raleway;
+      display: flex;
+      flex-direction: column;
+      content: "SEGUNDOS";
+      color:$grayDark;
+      font-size:0.3em;
+    }
+  }
+  }
+
+  .biddes-class {
+    
+
+    h2{
+    font-size:3em;
+    font-family:$open;
+    font-weight: 900;
+    color:$electric;
+    }
+  }
+
+  .write-bid{
+    border: 1px solid $cyan;
+    border-radius: 0.5em;
+    padding: 20px;
+    font-size:2em;
+    font-family:$open;
+    font-weight: 500;
+    &::placeholder{
+      opacity:0.3;
+      color:$electric;
+      
+    }
+    &[type="text"]:focus{
+      border: 1px solid $electric !important;
+      border-radius: 0.5em;
+      color:$electric;
+    }
+  }
+
+  .finaliza{
+    color:$blackText;
+    font-family: $raleway;
+    margin: 20px 20px;
+  }
+
+.email{
+  font-size: 0.8em;
+  font-family: $raleway;
+  color:$electric !important;
+
+}
+
+.capsule{
+  background-color: white;
+  box-shadow: $shadowBox;
+  border-radius: 1em;
+  padding:100px 80px;
+
+  form {
+    
+    label{
+      color:$blackText;
+      text-transform: uppercase;
+      font-size: 0.7em;
+      letter-spacing: 1.2px;
+      font-weight: 700;
+    }
+  }
+}
+
+.tit{
+
+  margin:20px 20px;
+
+  .title-form{
+    color:$electric;
+    font-family: $raleway;
+    font-weight: 900;
+    font-size:1.8em;
+    padding: 0;
+    margin-bottom:0px;
+    
+  }
+  .titlehr{
+    margin:10px 0 30px 0;
+    width: 100px;
+    border:2px solid $electric;
+  
+  }
+
+
+}
+
+.btn-google{
+  background-color: $pink !important;
+  &:hover{
+    color:$pink !important;
+    background-color: white !important;
+    border: 1px solid $pink !important;
+  }
+}
+.want-it{
+  color:$blackText;
+  font-family: $raleway;
+  font-weight: 300;
+  &:hover{
+    font-weight:500;
+    color:$cyan;
+    text-decoration: none;
+  }
+}
+
+.title-sign{
+  font-family: $raleway;
+  color:$blackText;
+  font-weight: 900 !important;
+}
+
+.title-fet{
+  font-size: 1em;
+}
+
+.rating2{
+  height: 20px;
+  font-size: 0.8em;
+
+}
+
+.text-secondary2{
+  font-size:0.6em;
+  font-family: $open;
+  
+}
+
+.nav-btn{
+  border:none;
+  color:$electric;
+  &:hover{
+    color:$cyan;
+  }
+}
+
+.owl-nav{
+  button{
+    border:none;
+    background-color: $whiteBg;
+    &:focus{
+      border:none;
+      border-bottom-color: $whiteBg !important;
+      outline-color: $whiteBg !important;
+    }
+    &:active{
+      border:none !important;
+      
+    }
+  }
+
+}
+
+
+#topbar {
+  background: $electric;
+  height: 30px;
+  font-size: 0.8em;
+  transition: all 0.5s;
+  color: #fff;
+
+
+  
+
+  .contact-info a {
+    line-height: 1;
+    color: #fff;
+    transition: 0.3s;
+  }
+
+  .contact-info a:hover {
+    text-decoration: underline;
+  }
+
+  .contact-info i {
+    padding-right: 4px;
+    margin-left: 15px;
+  }
+
+  .contact-info i:first-child {
+    margin-left: 0;
+  }
+
+  .social-links a {
+    color: rgba(255, 255, 255, 0.6);
+    padding-left: 15px;
+    display: inline-block;
+    line-height: 1px;
+    transition: 0.3s;
+  }
+
+  .social-links a:hover {
+    color: #fff;
+  }
+
+}
+
+#header {
+  
+  transition: all 0.5s;
+  z-index: 997;
+  top: 30px;
+  
+
+
+  
+}
+
+.header-scrolled {
+  top: 0 !important;
+  
+  }
+
+.topbar-scrolled {
+  top: -30px !important;
+  color:red;
+  }
+
+#finalizada{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-size:2em;
+    font-family: $raleway;
+    color: $pink;
+    font-weight: 900;
+    border: 1px solid $pink;
+    border-radius: 0.5em;
+    background-color: $grayLight;
+    box-shadow: $shadowBox;
+    p{
+      margin:0;
+    }
+    .text-secondary3{
+      font-size:0.5em !important;
+      font-weight:300;
+    }
+}
+
+.toast-error{
+  background-color: $pink !important;
+}
+
+.toast-success{
+  background-color: $cyan !important;
+}
+
+.toast-info{
+  background-color: $electric !important;
+}
+
+.capsule2{
+  background-color: white;
+  border-radius: 1em;
+  
+
+ 
+  form {
+    
+    label{
+      color:$blackText;
+      text-transform: uppercase;
+      font-size: 0.7em;
+      letter-spacing: 1.2px;
+      font-weight: 700;
+    }
+  }
+}
+
+
+/* vertical scroll */
+.scrollBar {
+  
+  height: 0%;
+  width: 3px;
+  background: $electric;
+  -webkit-transition: height 200ms ease;
+  transition: height 200ms ease;
+  text-align: right;
+  color: black;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  border-radius: 1em;
+  box-shadow: $shadowBox;
+  margin-bottom: 115px;
+
+
+  span {
+    border-radius: 1em;
+    bottom: 3px;
+    left: 2px;
+    font-size: 0.7em;
+    font-weight: 500;
+    display: inline-block;
+    text-align: left;
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    -webkit-transform-origin: bottom right;
+    transform-origin: bottom left;
+  }
+
+  span::after {
+    content: "";
+    font-size: 0.8em;
+    position: absolute;
+    right: -15px;
+    bottom: 4px;
+    font-weight: 700;
+    opacity: 0.4;
+  }
+}
+
+.ball{
+  width:30px;
+  height: 30px;
+  border-radius: 1em;
+  box-shadow: $shadowBox;
+  font-weight: 700;
+  font-size: 0.8em;
+  
+}
+  .incomplete{
+    background-color:$grayLight;
+    color:$blackText;
+    border: 1px solid $grayLight;
+  }
+  .actives{
+    background-color:$electric;
+    color:white;
+    border: 1px solid $electric;
+  }
+  .complete{
+    background-color:white;
+    color:$electric;
+    border: 1px solid $electric;
+  }
+
+  .form-group{
+    margin: 20px 0;
+  }
+  .dos{
+    position:absolute;
+    top:140px;
+  }
+  .tres{
+    position:absolute;
+    top:240px;
+  }
+  .cuatro{
+    position:absolute;
+    top:360px;
+  }
+  .cinco{
+    position:absolute;
+    top:480px;
+  }
+  .seis{
+    position:absolute;
+    top:595px;
+  }
+
+  .bg-electric{
+    background-color:$electric;
+  }
+
+  .modal-title{
+    font-family: $raleway;
+    font-weight: 900;
+    font-size:1.5em;
+    color:white;
+  }
+
+  .card-cart{
+    
+  border-radius: 10px;
+  box-shadow: $shadowBox;
+  margin: 20px 20px 20px 0;
+  border: 1px solid $grayLight;
+    
+    &:hover{
+      border:1px solid $cyan;
+    }
+
+    .title-cart{
+      font-size:2em;
+      font-weight: 900;
+      color:$blackText;
+    }
+
+    .text-secondary{
+      font-size:0.9em;
+      font-family: $open;
+      
+    }
+    .price-cart{
+      font-size:1.5em;
+      font-weight: 900;
+      color:$electric !important;
+      font-family: $open;
+      
+    }
+  }

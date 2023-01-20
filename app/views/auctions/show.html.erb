@@ -1,0 +1,74 @@
+
+<div class="row">
+<div class="col-sm-12 col-md-5 d-flex justify-content-center">
+  <div class="card" style="width: 24rem;">
+    <%= image_tag @auction.product.image.variant(resize:"400"), class:"card-img-top"%>
+    <div class="card-body">
+      <h5 class="title-show mt-3"><%= @auction.title %></h5>
+      <p class="text-secondary"> Artista: <%=@auction.product.author%></p>
+      <hr>
+        <p class="text-secondary my-4">Descripciòn: <%= @auction.description %></p>
+      
+    </div>
+  </div>
+</div>
+<div class="col-sm-12 col-md-7">
+    <div class="card" style="width: 36rem;">
+      <div class="card-body">
+        
+        <h3 class="finaliza"> Esta Subasta finaliza el <strong><%=l(@auction.end_date, :format => '%d %B %Y')%></strong></h3>
+        <div class="contador d-flex justify-content-center my-5">
+        
+        <% if !@auction.winner_id.present?%>
+          <%= render 'timer', countdown_seconds: @countdown_seconds %>
+        <%else%>
+          <div id="finalizada"><p>Subasta finalizada</p>
+            <% if @auction.deserted?%>
+            <p class="text-secondary3"> Estuviste a punto de ganarla</p>
+            <%else%>
+            <p class="text-secondary3"> El ganador de la subasta fuè <strong> <%= winner(@auction)%></strong></p>
+            <%end%>
+          </div>
+        <%end%>
+        </div>
+        </div>
+            <hr>
+        <div class="row info-bid d-flex justify-content-between">
+          <% if (@auction.bids.last).nil?%>
+          <p class="current_bid text-secondary px-5">Puja Ahora !!</p>
+          <%else%>
+          <p class="current_bid text-secondary px-5"> <strong>Ultima puja por:</strong>  <%=@auction.bids.last.user.name%></p>
+          <%end%>
+
+          <p class="bids_num text-secondary px-5"> <%=@auction.bids.count%> Pujas</p>
+        </div>
+        <div class="bid-container text-center ">
+        <p class="current text-secondary mb-0">
+        Puja Actual
+        </p>
+          <div id="biddes" class="biddes-class text-center">
+            <% if @bid.nil?%>
+              <h2><%=  number_to_currency(@auction.initial_price, :precision => 0, :delimiter => ".")   %></h2>
+            <% else%>
+              <%= render @bid %>
+            <% end%>
+          </div>
+        </div>
+        <form class="text-center my-4">
+          
+          <input type="text" class="write-bid" data-behavior="auction_speaker" data-auction="<%= @auction.id %>" placeholder="<%= placeholder_mas(@auction) %>">
+          
+        </form>
+      </div>
+    </div>
+</div>
+<%#= link_to 'Edit', edit_auction_path(@auction) %> 
+<%#= link_to 'Back', auctions_path %>
+
+</div>
+<div class="tit d-flex flex-column mt-5">
+<h1 class="title-form mt-5">Subastas Relacionadas</h1>
+<hr class="titlehr">
+<div class="row mt-2 d-flex flex-column justify-content-center">
+  <%= render 'shared/featured', auctions: @auctions%>
+</div>
